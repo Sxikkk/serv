@@ -19,9 +19,16 @@ public class AuthController
     }
 
     [HttpPost("/registration")]
-    public async Task<AuthResponseDto> Registration(RegistrationRequestDto dto)
+    public async Task<AuthResponseDto> Registration([FromBody] RegistrationRequestDto dto)
     {
         var response = await _authService.RegistrationAsync(dto);
+        return response;
+    }
+
+    [HttpPost("/login")]
+    public async Task<AuthResponseDto> Login(LoginRequestDto dto)
+    {
+        var response = await _authService.LoginAsync(dto);
         return response;
     }
 }

@@ -92,3 +92,4 @@ E:\PROJECTS\FULLSTACK\OPTbase\serv\Application\obj\Debug\net9.0\refint\Applicati
 E:\PROJECTS\FULLSTACK\OPTbase\serv\Application\obj\Debug\net9.0\Application.pdb
 E:\PROJECTS\FULLSTACK\OPTbase\serv\Application\obj\Debug\net9.0\Application.genruntimeconfig.cache
 E:\PROJECTS\FULLSTACK\OPTbase\serv\Application\obj\Debug\net9.0\ref\Application.dll
+E:\PROJECTS\FULLSTACK\OPTbase\serv\Application\obj\Debug\net9.0\Application.sourcelink.json

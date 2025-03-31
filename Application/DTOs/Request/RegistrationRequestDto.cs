@@ -4,9 +4,11 @@ namespace Domain.DTOs;
 
 public record RegistrationRequestDto
 {
+    [Required(ErrorMessage = "Имя обязательно")]
     public string FirstName { get; init; }
     public string LastName { get; init; }
-    [EmailAddress(ErrorMessage = "Invalid Email")]
+    [Required(ErrorMessage = "Email обязателен")]
+    [EmailAddress(ErrorMessage = "Некорректный email")]   
     public string Email { get; init; }
     public string Password { get; init; }
 }

@@ -5,5 +5,6 @@ namespace Application.Interfaces;
 
 public interface IUserService
 {
-    Task<User> CreateUser(RegistrationRequestDto dto);
+    Task<User> CreateUserAsync(RegistrationRequestDto dto);
+    Task<User> ChangeUserAsync(ChangeUserRequestDto dto, User user);
 }

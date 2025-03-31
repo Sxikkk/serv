@@ -5,5 +5,6 @@ namespace Infrastructure.Interfaces;
 public interface ITokenRepository
 {
     Task<RefreshToken> GetTokenByIdAsync(int id);
-    Task AddToken(RefreshToken token);
+    Task AddTokenAsync(RefreshToken token);
+    Task UpdateTokenAsync(int userId, string newToken);
 }

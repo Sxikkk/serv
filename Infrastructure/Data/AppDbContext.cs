@@ -19,10 +19,11 @@ public class AppDbContext: DbContext
     public DbSet<ShoppingCart> ShoppingCarts { get; set; }
     public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
     public DbSet<Review> Reviews { get; set; }
-    public DbSet<RefreshToken> RefreshTokens { get; set; }
+    public DbSet<RefreshToken> RefreshToken { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        
       // Конфигурация сущности Role
             modelBuilder.Entity<Role>()
                 .HasKey(r => r.id);

@@ -168,3 +168,4 @@ E:\PROJECTS\FULLSTACK\OPTbase\serv\Infrastructure\obj\Debug\net9.0\refint\Infras
 E:\PROJECTS\FULLSTACK\OPTbase\serv\Infrastructure\obj\Debug\net9.0\Infrastructure.pdb
 E:\PROJECTS\FULLSTACK\OPTbase\serv\Infrastructure\obj\Debug\net9.0\Infrastructure.genruntimeconfig.cache
 E:\PROJECTS\FULLSTACK\OPTbase\serv\Infrastructure\obj\Debug\net9.0\ref\Infrastructure.dll
+E:\PROJECTS\FULLSTACK\OPTbase\serv\Infrastructure\obj\Debug\net9.0\Infrastructure.sourcelink.json

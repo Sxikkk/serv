@@ -17,14 +17,12 @@ public class UserRepository : IUserRepository
     public async Task<User> GetByIdAsync(int userId)
     {
         var user = await _context.Users.FindAsync(userId);
-        ArgumentNullException.ThrowIfNull(user);
         return user;
     }
 
     public async Task<User> GetByEmailAsync(string email)
     {
         var user =  await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
-        ArgumentNullException.ThrowIfNull(user);
         return user;
     }
 
@@ -41,6 +39,7 @@ public class UserRepository : IUserRepository
 
     public async Task UpdateAsync(User user)
     {
+        user.UpdatedAt = DateTime.UtcNow;
         _context.Users.Update(user);
         await _context.SaveChangesAsync();
     }
