@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data;
@@ -21,9 +22,12 @@ public class AppDbContext: DbContext
     public DbSet<Review> Reviews { get; set; }
     public DbSet<RefreshToken> RefreshToken { get; set; }
     
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        
+    
+        var baseDate = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
       // Конфигурация сущности Role
             modelBuilder.Entity<Role>()
                 .HasKey(r => r.id);
@@ -182,10 +186,195 @@ public class AppDbContext: DbContext
                 .HasForeignKey(r => r.ProductId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // Заполнение начальных данных для Role
+            // Роли
             modelBuilder.Entity<Role>().HasData(
                 new Role { id = 1, Name = "Admin" },
-                new Role { id = 2, Name = "User" }
+                new Role { id = 2, Name = "User" },
+                new Role { id = 3, Name = "Supplier" } // Добавлен поставщик
+            );
+
+            // Пароли (реальные пароли в комментариях, хеши SHA256 в данных)
+            // Пароль для админа: "Admin123!"
+            // Пароль для пользователя: "User123!"
+            // Пароль для поставщика: "Supplier123!"
+            
+            // Пользователи
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Id = 1,
+                    FirstName = "Admin",
+                    LastName = "System",
+                    Email = "admin@example.com",
+                    PasswordHash = "3eb3fe66b31e3b4d10fa70b5cad49c7112294af6ae4e476a1c405155d45aa121", // SHA256 от "Admin123!"
+                    RoleId = 1,
+                    CreatedAt = baseDate,
+                    UpdatedAt = baseDate
+                },
+                new User
+                {
+                    Id = 2,
+                    FirstName = "John",
+                    LastName = "Doe",
+                    Email = "user@example.com",
+                    PasswordHash = "bc5848f227cc161eb5f68dfe98cb13110a9c843ce69e953a88107d865583d397", // SHA256 от "User123!"
+                    RoleId = 2,
+                    CreatedAt = baseDate,
+                    UpdatedAt = baseDate
+                },
+                new User
+                {
+                    Id = 3,
+                    FirstName = "Supplier",
+                    LastName = "Company",
+                    Email = "supplier@example.com",
+                    PasswordHash = "ad26fd82dfd1a497137cac44cfbff4db0c0e515680c070edf000fc5d68e76656", // SHA256 от "Supplier123!"
+                    RoleId = 3,
+                    CreatedAt = baseDate,
+                    UpdatedAt = baseDate
+                }
+            );
+
+            // Категории
+            modelBuilder.Entity<Category>().HasData(
+                new Category 
+                { 
+                    Id = 1, 
+                    Name = "Electronics", 
+                    Description = "Electronic devices and components",
+                    CreatedAt = baseDate,
+                    UpdatedAt = baseDate
+                },
+                new Category 
+                { 
+                    Id = 2, 
+                    Name = "Groceries", 
+                    Description = "Food products and groceries",
+                    CreatedAt = baseDate,
+                    UpdatedAt = baseDate
+                },
+                new Category 
+                { 
+                    Id = 3, 
+                    Name = "Clothing", 
+                    Description = "Apparel and accessories",
+                    CreatedAt = baseDate,
+                    UpdatedAt = baseDate
+                }
+            );
+
+            // Товары
+            modelBuilder.Entity<Product>().HasData(
+                new Product
+                {
+                    Id = 1,
+                    Name = "Laptop",
+                    Description = "High-performance business laptop",
+                    Price = 1200.00m,
+                    Quantity = 50,
+                    CategoryId = 1,
+                    CreatedAt = baseDate,
+                    UpdatedAt = baseDate
+                },
+                new Product
+                {
+                    Id = 2,
+                    Name = "Smartphone",
+                    Description = "Latest model smartphone",
+                    Price = 800.00m,
+                    Quantity = 100,
+                    CategoryId = 1,
+                    CreatedAt = baseDate,
+                    UpdatedAt = baseDate
+                },
+                new Product
+                {
+                    Id = 3,
+                    Name = "Organic Apples",
+                    Description = "Fresh organic apples, 1kg",
+                    Price = 3.50m,
+                    Quantity = 500,
+                    CategoryId = 2,
+                    CreatedAt = baseDate,
+                    UpdatedAt = baseDate
+                }
+            );
+
+            // Корзины покупок
+            modelBuilder.Entity<ShoppingCart>().HasData(
+                new ShoppingCart
+                {
+                    Id = 1,
+                    UserId = 2, // Обычный пользователь
+                    CreatedAt = baseDate
+                }
+            );
+
+            // Элементы корзины
+            modelBuilder.Entity<ShoppingCartItem>().HasData(
+                new ShoppingCartItem
+                {
+                    Id = 1,
+                    CartId = 1,
+                    ProductId = 1, // Laptop
+                    Quantity = 2
+                }
+            );
+
+            // Заказы
+            modelBuilder.Entity<Order>().HasData(
+                new Order
+                {
+                    Id = 1,
+                    UserId = 2,
+                    Status = Status.Delivered,
+                    TotalPrice = 2400.00m, // 2 x Laptop
+                    CreatedAt = baseDate.AddDays(-7),
+                    UpdatedAt = baseDate.AddDays(-6)
+                }
+            );
+
+            // Элементы заказа
+            modelBuilder.Entity<OrderItem>().HasData(
+                new OrderItem
+                {
+                    Id = 1,
+                    OrderId = 1,
+                    ProductId = 1, // Laptop
+                    Quantity = 2,
+                    Price = 1200.00m
+                }
+            );
+
+            // Отзывы
+            modelBuilder.Entity<Review>().HasData(
+                new Review
+                {
+                    Id = 1,
+                    UserId = 2,
+                    ProductId = 1,
+                    Rating = 5,
+                    Comment = "Excellent laptop for business use",
+                    CreatedAt = baseDate.AddDays(-5)
+                }
+            );
+
+            // Refresh токены
+            modelBuilder.Entity<RefreshToken>().HasData(
+                new RefreshToken
+                {
+                    Id = 1,
+                    UserId = 1,
+                    Token = "admin_refresh_token_sample",
+                    ExpiresAt = baseDate.AddDays(30)
+                },
+                new RefreshToken
+                {
+                    Id = 2,
+                    UserId = 2,
+                    Token = "user_refresh_token_sample",
+                    ExpiresAt = baseDate.AddDays(30)
+                }
             );
 
             base.OnModelCreating(modelBuilder);

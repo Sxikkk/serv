@@ -197,3 +197,4 @@ E:\PROJECTS\FULLSTACK\OPTbase\serv\Api\obj\Debug\net9.0\Api.pdb
 E:\PROJECTS\FULLSTACK\OPTbase\serv\Api\obj\Debug\net9.0\Api.genruntimeconfig.cache
 E:\PROJECTS\FULLSTACK\OPTbase\serv\Api\obj\Debug\net9.0\ref\Api.dll
 E:\PROJECTS\FULLSTACK\OPTbase\serv\Api\obj\Debug\net9.0\Api.sourcelink.json
+E:\PROJECTS\FULLSTACK\OPTbase\serv\Api\bin\Debug\net9.0\AutoMapper.dll

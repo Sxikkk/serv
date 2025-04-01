@@ -6,9 +6,9 @@ namespace Api.Controllers;
 [ApiController]
 [Route("[controller]")]
 [Authorize(Roles = "User")]
-public class UserController
+public class UserController: ControllerBase
 {
-    [HttpGet("/dsa")]
+    [HttpGet("dsa")]
     public string GetddsallUsers()
     {
         return "ЗАебись зареган юзер";

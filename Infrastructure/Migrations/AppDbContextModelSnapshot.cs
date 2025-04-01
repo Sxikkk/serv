@@ -47,6 +47,32 @@ namespace Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Electronic devices and components",
+                            Name = "Electronics",
+                            UpdatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Food products and groceries",
+                            Name = "Groceries",
+                            UpdatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Apparel and accessories",
+                            Name = "Clothing",
+                            UpdatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Order", b =>
@@ -77,6 +103,17 @@ namespace Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Orders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 12, 25, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Status = 2,
+                            TotalPrice = 2400.00m,
+                            UpdatedAt = new DateTime(2023, 12, 26, 0, 0, 0, 0, DateTimeKind.Utc),
+                            UserId = 2
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.OrderItem", b =>
@@ -107,6 +144,16 @@ namespace Infrastructure.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("OrderItems");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            OrderId = 1,
+                            Price = 1200.00m,
+                            ProductId = 1,
+                            Quantity = 2
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Product", b =>
@@ -147,6 +194,41 @@ namespace Infrastructure.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "High-performance business laptop",
+                            Name = "Laptop",
+                            Price = 1200.00m,
+                            Quantity = 50,
+                            UpdatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Latest model smartphone",
+                            Name = "Smartphone",
+                            Price = 800.00m,
+                            Quantity = 100,
+                            UpdatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 2,
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Fresh organic apples, 1kg",
+                            Name = "Organic Apples",
+                            Price = 3.50m,
+                            Quantity = 500,
+                            UpdatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.RefreshToken", b =>
@@ -173,6 +255,22 @@ namespace Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("RefreshToken");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ExpiresAt = new DateTime(2024, 1, 31, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Token = "admin_refresh_token_sample",
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ExpiresAt = new DateTime(2024, 1, 31, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Token = "user_refresh_token_sample",
+                            UserId = 2
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Review", b =>
@@ -207,6 +305,17 @@ namespace Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Reviews");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Comment = "Excellent laptop for business use",
+                            CreatedAt = new DateTime(2023, 12, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ProductId = 1,
+                            Rating = 5,
+                            UserId = 2
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Role", b =>
@@ -236,6 +345,11 @@ namespace Infrastructure.Migrations
                         {
                             id = 2,
                             Name = "User"
+                        },
+                        new
+                        {
+                            id = 3,
+                            Name = "Supplier"
                         });
                 });
 
@@ -259,6 +373,14 @@ namespace Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("ShoppingCarts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            UserId = 2
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.ShoppingCartItem", b =>
@@ -285,6 +407,15 @@ namespace Infrastructure.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ShoppingCartItems");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CartId = 1,
+                            ProductId = 1,
+                            Quantity = 2
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
@@ -328,6 +459,41 @@ namespace Infrastructure.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "admin@wholesale.com",
+                            FirstName = "Admin",
+                            LastName = "System",
+                            PasswordHash = "3eb3fe66b31e3b4d10fa70b5cad49c7112294af6ae4e476a1c405155d45aa121",
+                            RoleId = 1,
+                            UpdatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user@wholesale.com",
+                            FirstName = "John",
+                            LastName = "Doe",
+                            PasswordHash = "bc5848f227cc161eb5f68dfe98cb13110a9c843ce69e953a88107d865583d397",
+                            RoleId = 2,
+                            UpdatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "supplier@wholesale.com",
+                            FirstName = "Supplier",
+                            LastName = "Company",
+                            PasswordHash = "ad26fd82dfd1a497137cac44cfbff4db0c0e515680c070edf000fc5d68e76656",
+                            RoleId = 3,
+                            UpdatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Order", b =>

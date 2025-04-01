@@ -2,10 +2,11 @@
 
 namespace Domain.DTOs;
 
-public record TokenRequestDto (
+public record TokenRequestDto
+{
     [Required]
-    [EmailAddress(ErrorMessage = "Invalid Email Address")]
-    string Email,
+    [EmailAddress(ErrorMessage = "Invalid Email")]
+    public string Email { get; init; }
     [Required]
-    string RefreshToken 
-);
+    public string RefreshToken { get; init; }
+};

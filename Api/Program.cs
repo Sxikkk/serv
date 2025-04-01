@@ -1,7 +1,11 @@
 using System.Text;
+using System.Text.Json.Serialization;
 using Api.Middlewares;
+using Api.Middlewares.Mapping;
+using Application.DTOs.Response;
 using Application.Interfaces;
 using Application.Services;
+using Domain.Entities;
 using Infrastructure.Data;
 using Infrastructure.Interfaces;
 using Infrastructure.Repository;
@@ -64,20 +68,23 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     {
         var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
 
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidIssuer = jwtSettings.Issuer,
-            ValidateAudience = true,
-            ValidAudience = jwtSettings.Audience,
-            ValidateLifetime = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey)),
-            ValidateIssuerSigningKey = true
-        };
+        if (jwtSettings != null)
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidIssuer = jwtSettings.Issuer,
+                ValidateAudience = true,
+                ValidAudience = jwtSettings.Audience,
+                ValidateLifetime = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey)),
+                ValidateIssuerSigningKey = true
+            };
     });
 builder.Services.AddAuthorization();
 
 // Регистрация сервисов приложения
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();

@@ -9,7 +9,7 @@ namespace Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class AuthController
+public class AuthController: ControllerBase
 {
     private readonly IAuthService _authService;
 
@@ -18,17 +18,24 @@ public class AuthController
         _authService = authService;
     }
 
-    [HttpPost("/registration")]
-    public async Task<AuthResponseDto> Registration([FromBody] RegistrationRequestDto dto)
+    [HttpPost("registration")]
+    public async Task<IResult> Registration([FromBody] RegistrationRequestDto dto)
     {
         var response = await _authService.RegistrationAsync(dto);
-        return response;
+        return Results.Ok(response);
     }
 
-    [HttpPost("/login")]
-    public async Task<AuthResponseDto> Login(LoginRequestDto dto)
+    [HttpPost("login")]
+    public async Task<IResult> Login(LoginRequestDto dto)
     {
         var response = await _authService.LoginAsync(dto);
-        return response;
+        return Results.Ok(response);
+    }
+
+    [HttpPost("updateToken")]
+    public async Task<IResult> UpdateToken(TokenRequestDto dto)
+    {
+        var response = await _authService.RefreshTokenAsync(dto);
+        return Results.Ok(response);
     }
 }

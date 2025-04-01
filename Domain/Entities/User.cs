@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Domain.Entities;
 
@@ -22,6 +23,7 @@ public class User
     public Role Role { get; set; }
 
     // Связь с корзиной покупок
+    [JsonIgnore]
     public ShoppingCart ShoppingCart { get; set; }
 
     // Связь с заказами

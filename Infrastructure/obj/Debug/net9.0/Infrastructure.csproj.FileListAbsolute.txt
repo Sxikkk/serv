@@ -169,3 +169,4 @@ E:\PROJECTS\FULLSTACK\OPTbase\serv\Infrastructure\obj\Debug\net9.0\Infrastructur
 E:\PROJECTS\FULLSTACK\OPTbase\serv\Infrastructure\obj\Debug\net9.0\Infrastructure.genruntimeconfig.cache
 E:\PROJECTS\FULLSTACK\OPTbase\serv\Infrastructure\obj\Debug\net9.0\ref\Infrastructure.dll
 E:\PROJECTS\FULLSTACK\OPTbase\serv\Infrastructure\obj\Debug\net9.0\Infrastructure.sourcelink.json
+E:\PROJECTS\FULLSTACK\OPTbase\serv\Infrastructure\bin\Debug\net9.0\AutoMapper.dll

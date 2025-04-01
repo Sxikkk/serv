@@ -8,19 +8,29 @@ namespace Infrastructure.Repository;
 public class UserRepository : IUserRepository
 {
     private readonly AppDbContext _context;
-
+    
     public UserRepository(AppDbContext context)
     {
         _context = context;
     }
 
-    public async Task<User> GetByIdAsync(int userId)
+    public async Task<User> GetUserByIdAsync(int id)
     {
-        var user = await _context.Users.FindAsync(userId);
-        return user;
+        return await _context.Users
+            .Include(u => u.Role)
+            .Include(u => u.ShoppingCart)
+            .ThenInclude(sc => sc.ShoppingCartItems)
+            .ThenInclude(sci => sci.Product)
+            .Include(u => u.Orders)
+            .ThenInclude(o => o.OrderItems)
+            .ThenInclude(oi => oi.Product)
+            .Include(u => u.Reviews)
+            .ThenInclude(r => r.Product)
+            .FirstOrDefaultAsync(u => u.Id == id);
     }
 
-    public async Task<User> GetByEmailAsync(string email)
+
+    public async Task<User> GetUserByEmailAsync(string email)
     {
         var user =  await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         return user;
@@ -28,7 +38,20 @@ public class UserRepository : IUserRepository
 
     public async Task<ICollection<User>> GetAllAsync()
     {
-        return await _context.Users.ToListAsync();
+        return await _context.Users
+            .Include(u => u.Role)
+            .Include(u => u.ShoppingCart)
+            .ThenInclude(sc => sc.ShoppingCartItems)
+            .ThenInclude(sci => sci.Product)
+            .ThenInclude(p => p.Category)  // Добавлено подгружение категории продукта
+            .Include(u => u.Orders)
+            .ThenInclude(o => o.OrderItems)
+            .ThenInclude(oi => oi.Product)
+            .ThenInclude(p => p.Category)  // Добавлено подгружение категории продукта для заказа
+            .Include(u => u.Reviews)
+            .ThenInclude(r => r.Product)
+            .ThenInclude(p => p.Category)  // Добавлено подгружение категории продукта для отзыва
+            .ToListAsync();
     }
 
     public async Task AddAsync(User user)
@@ -46,12 +69,9 @@ public class UserRepository : IUserRepository
 
     public async Task DeleteAsync(int userId)
     {
-        var user = await _context.Users.FindAsync(userId);
-        if (user != null)
-        {
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-        }
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+        _context.Users.Remove(user);
+        await _context.SaveChangesAsync();
     }
 
     public async Task<bool> ExistsByEmailAsync(string email)

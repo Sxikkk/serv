@@ -4,6 +4,7 @@ using Application.Interfaces;
 using Domain.DTOs;
 using Infrastructure.Interfaces;
 using Infrastructure.Repository;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Application.Services;
 
@@ -45,7 +46,6 @@ public class AuthService: IAuthService
             var newUser = await _userService.CreateUserAsync(requestDto);
             await _tokenRepository.AddTokenAsync(newUser.RefreshToken);
         
-            // Получаем название роли (с обработкой возможных ошибок)
             var roleName = await _roleRepository.GetRoleNameByIdAsync(newUser.RoleId);
         
             var accessToken = _tokenService.GetAccessToken(newUser, new RoleRequestDto { 
@@ -74,7 +74,7 @@ public class AuthService: IAuthService
 
     try
     {
-        var user = await _userRepository.GetByEmailAsync(requestDto.Email);
+        var user = await _userRepository.GetUserByEmailAsync(requestDto.Email);
         if (user == null)
         {
             _logger.LogWarning("Попытка входа с несуществующим email: {Email}", requestDto.Email);
@@ -116,8 +116,39 @@ public class AuthService: IAuthService
     }
 }
 
-    public Task<string> RefreshTokenAsync(TokenRequestDto dto)
+    public async Task<AuthResponseDto> RefreshTokenAsync(TokenRequestDto dto)
     {
-        throw new NotImplementedException();
+        try
+        {
+            if (dto.Email == null)
+            {
+                throw new Exception("Нет почты");
+            }
+            var user = await _userRepository.GetUserByEmailAsync(dto.Email);
+            var userToken = await _tokenRepository.GetTokenByIdAsync(user.Id);
+            if (userToken.Token == dto.RefreshToken)
+            {
+                var newTokens = new
+                {
+                    AccessToken = _tokenService.GetAccessToken(user,
+                        new RoleRequestDto { Name = await _roleRepository.GetRoleNameByIdAsync(user.RoleId) }),
+                    RefreshToken = _tokenService.GetRefreshToken(user)
+                };
+                await _tokenRepository.UpdateTokenAsync(user.Id, newTokens.RefreshToken);
+                return new AuthResponseDto
+                {
+                    AccessToken = newTokens.AccessToken,
+                    RefreshToken = newTokens.RefreshToken,
+                    Email = user.Email
+                };    
+            }
+
+            throw new Exception("Токены не совпали");
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Чета было: {e}", e.Message);
+            throw;
+        }
     }
 }
