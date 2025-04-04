@@ -7,7 +7,7 @@ public interface IShoppingCartRepository
     Task<ICollection<ShoppingCartItem>> GetShoppingCartItemsAsync(int userId);
     Task<ShoppingCartItem> GetItemByIdAsync(int itemId, int userId);
     Task<ShoppingCart> GetShoppingCartAsync(int userId);
-    Task DeleteItemFromCartAsync(int itemId, int userId);
-    Task AddItemToCartAsync(ShoppingCartItem item);
+    Task DeleteItemFromCartAsync(int userId, int productId, int quantity);
+    Task AddItemToCartAsync(int userId, int productId, int quantity);
     Task<bool> ExistItemByIdAsync(int itemId);
 }

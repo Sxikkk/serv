@@ -47,23 +47,21 @@ public class ShoppingService: IShoppingService
         var mappedItem = _mapper.Map<ShoppingCartItemResponseDto>(item);
         return mappedItem;
     }
-
-    public async Task AddItemInCartAsync(ShoppingCartItemRequestDto dto)
+    
+    public async Task AddItemInCartAsync(int userId, ShoppingCartItemRequestDto dto)
     {
-        var item = new ShoppingCartItem
-        {
-            CartId = dto.CartId,
-            ProductId = dto.ProductId,
-            Quantity = dto.Quantity
-        };
-
-        await _shoppingCartRepository.AddItemToCartAsync(item);
+        await _shoppingCartRepository.AddItemToCartAsync(userId, dto.ProductId, dto.Quantity);
     }
 
-    public async Task DeleteItemFromCartAsync(int itemId, int userId)
+    public async Task DeleteItemFromCartAsync(int userId, ShoppingCartItemRequestDto dto)
     {
-        if (!await _shoppingCartRepository.ExistItemByIdAsync(itemId)) throw new Exception("Товар не найден");
+        await _shoppingCartRepository.DeleteItemFromCartAsync(userId, dto.ProductId, dto.Quantity);
 
-        await _shoppingCartRepository.DeleteItemFromCartAsync(itemId, userId);
+    }
+
+    public async Task<decimal> CalculatePriceAsync(int userId)
+    {
+        var cart = await GetShoppingCartItemsAsync(userId);
+        return cart.Sum(item => item.Product.Price);
     }
 }

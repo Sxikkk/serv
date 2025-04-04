@@ -50,33 +50,46 @@ public class UserService: IUserService
         return user;
     }
 
-    public async Task<User> ChangeUserAsync(ChangeUserRequestDto dto, User user)
+    public async Task<User> ChangeUserAsync(ChangeUserRequestDto dto, int userId)
     {
-        if (dto is { OldPassword: not null, NewPassword: not null })
+        if (!await _userRepository.ExistsByIdAsync(userId)) 
+            throw new Exception("Пользователь не найден");
+
+        var user = await _userRepository.GetUserByIdAsync(userId);
+        if (user == null) 
+            throw new Exception("Пользователь не найден");
+
+        var isUpdated = false;
+
+        if (!string.IsNullOrEmpty(dto.OldPassword) && !string.IsNullOrEmpty(dto.NewPassword))
         {
-            var hashedOldDtoPassword = Hash.Password(dto.OldPassword);
-            if (hashedOldDtoPassword == user.PasswordHash)
-            {
-                var newHashedPassword = Hash.Password(dto.NewPassword);
-                user.PasswordHash = newHashedPassword;
-                await _userRepository.UpdateAsync(user);
-            }
+            if (Hash.Password(dto.OldPassword) == user.PasswordHash)
+                throw new InvalidOperationException("Неверный старый пароль");
+
+            user.PasswordHash = Hash.Password(dto.NewPassword);
+            isUpdated = true;
         }
 
-        if (dto.NewFirstName != null)
+        if (!string.IsNullOrEmpty(dto.NewFirstName) && dto.NewFirstName != user.FirstName)
         {
             user.FirstName = dto.NewFirstName;
-            await _userRepository.UpdateAsync(user);
+            isUpdated = true;
         }
 
-        if (dto.NewLastName != null)
+        if (!string.IsNullOrEmpty(dto.NewLastName) && dto.NewLastName != user.LastName)
         {
             user.LastName = dto.NewLastName;
+            isUpdated = true;
+        }
+
+        if (isUpdated)
+        {
             await _userRepository.UpdateAsync(user);
         }
 
         return user;
     }
+
     public async Task<List<UserResponseDto>> GetAllUsersAsync()
     {
         var users = await _userRepository.GetAllAsync();

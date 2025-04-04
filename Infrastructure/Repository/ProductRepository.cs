@@ -43,10 +43,11 @@ public class ProductRepository: IProductRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteProductAsync(int prodId)
+    public async Task<Product> DeleteProductAsync(int prodId)
     {
         var prod = await GetProductByIdAsync(prodId);
         _context.Products.Remove(prod);
         await _context.SaveChangesAsync();
+        return prod;
     }
 }
