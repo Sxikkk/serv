@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Api\\Api.csproj": {}
+    "E:\\PROJECTS\\FULLSTACK\\serv\\Api\\Api.csproj": {}
   },
   "projects": {
-    "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Api\\Api.csproj": {
+    "E:\\PROJECTS\\FULLSTACK\\serv\\Api\\Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Api\\Api.csproj",
+        "projectUniqueName": "E:\\PROJECTS\\FULLSTACK\\serv\\Api\\Api.csproj",
         "projectName": "Api",
-        "projectPath": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Api\\Api.csproj",
+        "projectPath": "E:\\PROJECTS\\FULLSTACK\\serv\\Api\\Api.csproj",
         "packagesPath": "C:\\Users\\wallk\\.nuget\\packages\\",
-        "outputPath": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Api\\obj\\",
+        "outputPath": "E:\\PROJECTS\\FULLSTACK\\serv\\Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\wallk\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,11 +26,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Application\\Application.csproj": {
-                "projectPath": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Application\\Application.csproj"
+              "E:\\PROJECTS\\FULLSTACK\\serv\\Application\\Application.csproj": {
+                "projectPath": "E:\\PROJECTS\\FULLSTACK\\serv\\Application\\Application.csproj"
               },
-              "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Infrastructure\\Infrastructure.csproj"
+              "E:\\PROJECTS\\FULLSTACK\\serv\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "E:\\PROJECTS\\FULLSTACK\\serv\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -119,14 +119,14 @@
         }
       }
     },
-    "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Application\\Application.csproj": {
+    "E:\\PROJECTS\\FULLSTACK\\serv\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Application\\Application.csproj",
+        "projectUniqueName": "E:\\PROJECTS\\FULLSTACK\\serv\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Application\\Application.csproj",
+        "projectPath": "E:\\PROJECTS\\FULLSTACK\\serv\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\wallk\\.nuget\\packages\\",
-        "outputPath": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Application\\obj\\",
+        "outputPath": "E:\\PROJECTS\\FULLSTACK\\serv\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\wallk\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -141,11 +141,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Domain\\Domain.csproj": {
-                "projectPath": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Domain\\Domain.csproj"
+              "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\Domain.csproj": {
+                "projectPath": "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\Domain.csproj"
               },
-              "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Infrastructure\\Infrastructure.csproj"
+              "E:\\PROJECTS\\FULLSTACK\\serv\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "E:\\PROJECTS\\FULLSTACK\\serv\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -202,14 +202,14 @@
         }
       }
     },
-    "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Domain\\Domain.csproj": {
+    "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Domain\\Domain.csproj",
+        "projectUniqueName": "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Domain\\Domain.csproj",
+        "projectPath": "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\wallk\\.nuget\\packages\\",
-        "outputPath": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Domain\\obj\\",
+        "outputPath": "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\wallk\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -284,14 +284,14 @@
         }
       }
     },
-    "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Infrastructure\\Infrastructure.csproj": {
+    "E:\\PROJECTS\\FULLSTACK\\serv\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "E:\\PROJECTS\\FULLSTACK\\serv\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "E:\\PROJECTS\\FULLSTACK\\serv\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\wallk\\.nuget\\packages\\",
-        "outputPath": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Infrastructure\\obj\\",
+        "outputPath": "E:\\PROJECTS\\FULLSTACK\\serv\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\wallk\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -306,8 +306,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Domain\\Domain.csproj": {
-                "projectPath": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Domain\\Domain.csproj"
+              "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\Domain.csproj": {
+                "projectPath": "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\Domain.csproj"
               }
             }
           }

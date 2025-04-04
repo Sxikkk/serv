@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Domain\\Domain.csproj": {}
+    "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Domain\\Domain.csproj": {
+    "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Domain\\Domain.csproj",
+        "projectUniqueName": "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Domain\\Domain.csproj",
+        "projectPath": "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\wallk\\.nuget\\packages\\",
-        "outputPath": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Domain\\obj\\",
+        "outputPath": "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\wallk\\AppData\\Roaming\\NuGet\\NuGet.Config"

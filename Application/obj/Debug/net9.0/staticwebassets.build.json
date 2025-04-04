@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "FzrskJB83Jl853l5gDSgxPohiQAi7onILVgL8aJeJGc=",
+  "Hash": "DbRQhkzpp5XddQaFwOCMAVeoBq6sN+vMreO5Pnnl2M0=",
   "Source": "Application",
   "BasePath": "_content/Application",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Domain\\Domain.csproj",
+      "Identity": "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\Domain.csproj",
       "Version": 2,
       "Source": "Domain",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
@@ -18,7 +18,7 @@
       "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
     },
     {
-      "Identity": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Infrastructure\\Infrastructure.csproj",
+      "Identity": "E:\\PROJECTS\\FULLSTACK\\serv\\Infrastructure\\Infrastructure.csproj",
       "Version": 2,
       "Source": "Infrastructure",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",

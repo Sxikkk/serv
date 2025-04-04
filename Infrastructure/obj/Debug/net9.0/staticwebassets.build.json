@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "QDR6sa9kYAGPEZYlPrNEFX09R8Jm8qAiQUpqU0x99nM=",
+  "Hash": "spp9OciJ3/ZJiiPwoBDuNsyU3i/Rkv7GRupiWrBNRSQ=",
   "Source": "Infrastructure",
   "BasePath": "_content/Infrastructure",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "E:\\PROJECTS\\FULLSTACK\\OPTbase\\serv\\Domain\\Domain.csproj",
+      "Identity": "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\Domain.csproj",
       "Version": 2,
       "Source": "Domain",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
