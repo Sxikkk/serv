@@ -12,6 +12,7 @@ public class AuthService: IAuthService
 {
     private readonly IUserRepository _userRepository;
     private readonly ITokenRepository _tokenRepository;
+    private readonly IShoppingService _shoppingService;
     private readonly ITokenService _tokenService;
     private readonly IRoleRepository _roleRepository;
     private readonly IUserService _userService;
@@ -23,11 +24,13 @@ public class AuthService: IAuthService
         ILogger<AuthService> logger, 
         IUserRepository userRepository, 
         ITokenRepository tokenRepository,
-        IRoleRepository roleRepository
+        IRoleRepository roleRepository,
+        IShoppingService shoppingService
         )
     {
         _tokenService = tokenService;
         _userService = userService;
+        _shoppingService = shoppingService;
         _roleRepository = roleRepository;
         _logger = logger;
         _userRepository = userRepository;
@@ -47,9 +50,11 @@ public class AuthService: IAuthService
             await _tokenRepository.AddTokenAsync(newUser.RefreshToken);
         
             var roleName = await _roleRepository.GetRoleNameByIdAsync(newUser.RoleId);
+            var cartId = await _shoppingService.GetCartIdByUserIdAsync(newUser.Id);
         
-            var accessToken = _tokenService.GetAccessToken(newUser, new RoleRequestDto { 
-                Name = roleName 
+            var accessToken = _tokenService.GetAccessToken(newUser, new AccessClaimsRequestDto { 
+                RoleName = roleName,
+                CartId = cartId
             });
 
             _logger.LogInformation("Успешная регистрация: {Email}", newUser.Email);
@@ -96,7 +101,11 @@ public class AuthService: IAuthService
         }
 
         var newRefreshToken = _tokenService.GetRefreshToken(user);
-        var newAccessToken = _tokenService.GetAccessToken(user, new RoleRequestDto { Name = roleName });
+        var newAccessToken = _tokenService.GetAccessToken(user, new AccessClaimsRequestDto
+        {
+            RoleName = roleName,
+            CartId = await _shoppingService.GetCartIdByUserIdAsync(user.Id)
+        });
 
         await _tokenRepository.UpdateTokenAsync(user.Id, newRefreshToken);
 
@@ -131,7 +140,11 @@ public class AuthService: IAuthService
                 var newTokens = new
                 {
                     AccessToken = _tokenService.GetAccessToken(user,
-                        new RoleRequestDto { Name = await _roleRepository.GetRoleNameByIdAsync(user.RoleId) }),
+                        new AccessClaimsRequestDto
+                        {
+                            RoleName = await _roleRepository.GetRoleNameByIdAsync(user.RoleId),
+                            CartId = await _shoppingService.GetCartIdByUserIdAsync(user.Id)
+                        }),
                     RefreshToken = _tokenService.GetRefreshToken(user)
                 };
                 await _tokenRepository.UpdateTokenAsync(user.Id, newTokens.RefreshToken);

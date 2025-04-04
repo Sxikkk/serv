@@ -8,5 +8,5 @@ public interface ITokenService
 {
     SymmetricSecurityKey GetSymetricalKey();
     public string GetRefreshToken(User user);
-    public string GetAccessToken(User user, RoleRequestDto roleRequestDto);
+    public string GetAccessToken(User user, AccessClaimsRequestDto dto);
 }

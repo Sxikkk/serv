@@ -1,6 +1,7 @@
 ﻿namespace Domain.DTOs;
 
-public record RoleRequestDto
+public record AccessClaimsRequestDto
 {
-    public string Name { get; init; }
+    public string? RoleName { get; init; }
+    public int CartId { get; init; }
 };

@@ -37,15 +37,16 @@ public class TokenService : ITokenService
         return new JwtSecurityTokenHandler().WriteToken(refreshJwt);
     }
 
-    public string GetAccessToken(User user, RoleRequestDto roleDto)
+    public string GetAccessToken(User user, AccessClaimsRequestDto dto)
     {
         ArgumentNullException.ThrowIfNull(user);
 
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim("userId", user.Id.ToString()),
+            new Claim("cartId", dto.CartId.ToString()),
             new Claim(ClaimTypes.Email, user.Email),
-            new Claim(ClaimTypes.Role, roleDto.Name)
+            new Claim(ClaimTypes.Role, dto.RoleName)
         };
         var accessJwt = new JwtSecurityToken(
             issuer: _jwtSettings.Issuer,

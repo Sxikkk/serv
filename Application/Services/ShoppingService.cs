@@ -38,6 +38,14 @@ public class ShoppingService: IShoppingService
         return mappedCart;
     }
 
+    public async Task<int> GetCartIdByUserIdAsync(int userId)
+    {
+        if (!await _userRepository.ExistsByIdAsync(userId)) throw new Exception("Пользователь не найден");
+
+        var cart = await _shoppingCartRepository.GetShoppingCartAsync(userId);
+        return cart.Id;
+    }
+
     public async Task<ShoppingCartItemResponseDto> GetCartItemByIdAsync(int itemId, int userId)
     {
         if (!await _shoppingCartRepository.ExistItemByIdAsync(itemId)) throw new Exception("Товар не найден");
