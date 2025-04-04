@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Application.Interfaces;
+using Infrastructure.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers;
@@ -8,9 +10,12 @@ namespace Api.Controllers;
 [Authorize(Roles = "User")]
 public class UserController: ControllerBase
 {
-    [HttpGet("dsa")]
-    public string GetddsallUsers()
+    private readonly IUserService _userService;
+
+    public UserController(IUserService userService)
     {
-        return "ЗАебись зареган юзер";
+        _userService = userService;
     }
+    
+    
 }

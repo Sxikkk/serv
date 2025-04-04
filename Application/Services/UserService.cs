@@ -34,7 +34,8 @@ public class UserService: IUserService
             RoleId = 2,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,
-            RefreshToken = null
+            RefreshToken = null,
+            ShoppingCart = new ShoppingCart()
         };
         await _userRepository.AddAsync(user);
         var refreshToken = new RefreshToken

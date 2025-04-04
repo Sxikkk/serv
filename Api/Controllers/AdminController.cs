@@ -1,14 +1,8 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-using Application.Interfaces;
-using Domain.Entities;
-using Infrastructure.Interfaces;
+﻿using Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Client;
 
 namespace Api.Controllers;
-
 
 [ApiController]
 [Route("[controller]")]

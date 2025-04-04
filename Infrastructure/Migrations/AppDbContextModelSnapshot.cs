@@ -465,7 +465,7 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "admin@wholesale.com",
+                            Email = "admin@example.com",
                             FirstName = "Admin",
                             LastName = "System",
                             PasswordHash = "3eb3fe66b31e3b4d10fa70b5cad49c7112294af6ae4e476a1c405155d45aa121",
@@ -476,7 +476,7 @@ namespace Infrastructure.Migrations
                         {
                             Id = 2,
                             CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "user@wholesale.com",
+                            Email = "user@example.com",
                             FirstName = "John",
                             LastName = "Doe",
                             PasswordHash = "bc5848f227cc161eb5f68dfe98cb13110a9c843ce69e953a88107d865583d397",
@@ -487,7 +487,7 @@ namespace Infrastructure.Migrations
                         {
                             Id = 3,
                             CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "supplier@wholesale.com",
+                            Email = "supplier@example.com",
                             FirstName = "Supplier",
                             LastName = "Company",
                             PasswordHash = "ad26fd82dfd1a497137cac44cfbff4db0c0e515680c070edf000fc5d68e76656",

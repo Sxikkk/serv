@@ -1,6 +1,7 @@
 ﻿using Application.DTOs.Response;
 using Domain.Entities;
 using AutoMapper;
+using Domain.DTOs;
 
 namespace Api.Middlewares.Mapping;
 
@@ -47,5 +48,16 @@ public class MappingProfile : Profile
         CreateMap<User, UserResponseDto>()
             .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role))
             .ForMember(dest => dest.ShoppingCart, opt => opt.MapFrom(src => src.ShoppingCart));
+        
+        CreateMap<ProductRequestDto, Product>()
+            .ForMember(dest => dest.Category, 
+                opt => opt.Ignore()) // Игнорируем, так как CategoryId будет обрабатываться отдельно
+            .ForMember(dest => dest.CreatedAt,
+                opt => opt.MapFrom(_ => DateTime.UtcNow))
+            .ForMember(dest => dest.UpdatedAt,
+                opt => opt.MapFrom(_ => DateTime.UtcNow));
+
+        // Маппинг для ответа (Entity -> DTO)
+        CreateMap<Product, ProductResponseDto>();
     }
 }

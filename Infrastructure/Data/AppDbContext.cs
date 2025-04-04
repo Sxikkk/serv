@@ -209,7 +209,7 @@ public class AppDbContext: DbContext
                     PasswordHash = "3eb3fe66b31e3b4d10fa70b5cad49c7112294af6ae4e476a1c405155d45aa121", // SHA256 от "Admin123!"
                     RoleId = 1,
                     CreatedAt = baseDate,
-                    UpdatedAt = baseDate
+                    UpdatedAt = baseDate,
                 },
                 new User
                 {
@@ -228,13 +228,16 @@ public class AppDbContext: DbContext
                     FirstName = "Supplier",
                     LastName = "Company",
                     Email = "supplier@example.com",
-                    PasswordHash = "ad26fd82dfd1a497137cac44cfbff4db0c0e515680c070edf000fc5d68e76656", // SHA256 от "Supplier123!"
+                    PasswordHash = "ad26fd82dfd1a497137cac44cfbff4db0c0e515680c070edf000fc5d68e76656", // SHA256 от "Supplier123!!"
                     RoleId = 3,
                     CreatedAt = baseDate,
                     UpdatedAt = baseDate
                 }
             );
 
+            modelBuilder.Entity<RefreshToken>().HasData(
+            );
+            
             // Категории
             modelBuilder.Entity<Category>().HasData(
                 new Category 
@@ -373,6 +376,13 @@ public class AppDbContext: DbContext
                     Id = 2,
                     UserId = 2,
                     Token = "user_refresh_token_sample",
+                    ExpiresAt = baseDate.AddDays(30)
+                },
+                new RefreshToken
+                {
+                    Id = 3,
+                    UserId = 3,
+                    Token = "supplier_refresh_token_sample",
                     ExpiresAt = baseDate.AddDays(30)
                 }
             );
