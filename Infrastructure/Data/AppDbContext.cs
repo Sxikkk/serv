@@ -60,7 +60,7 @@ public class AppDbContext: DbContext
                 .HasOne(u => u.Role)
                 .WithMany(r => r.Users)
                 .HasForeignKey(u => u.RoleId)
-                .OnDelete(DeleteBehavior.Restrict); // Запрещает каскадное удаление ролей
+                .OnDelete(DeleteBehavior.Restrict); 
 
             // Конфигурация сущности Product
             modelBuilder.Entity<Product>()
@@ -85,7 +85,7 @@ public class AppDbContext: DbContext
                 .HasOne(p => p.Category)
                 .WithMany(c => c.Products)
                 .HasForeignKey(p => p.CategoryId)
-                .OnDelete(DeleteBehavior.SetNull); // При удалении категории не удалять товары, а устанавливать NULL
+                .OnDelete(DeleteBehavior.SetNull); 
 
             // Конфигурация сущности Order
             modelBuilder.Entity<Order>()
@@ -103,7 +103,7 @@ public class AppDbContext: DbContext
                 .HasOne(o => o.User)
                 .WithMany(u => u.Orders)
                 .HasForeignKey(o => o.UserId)
-                .OnDelete(DeleteBehavior.Cascade); // Каскадное удаление заказов при удалении пользователя
+                .OnDelete(DeleteBehavior.Cascade); 
 
             // Конфигурация сущности OrderItem
             modelBuilder.Entity<OrderItem>()
@@ -118,15 +118,15 @@ public class AppDbContext: DbContext
                 .HasOne(oi => oi.Order)
                 .WithMany(o => o.OrderItems)
                 .HasForeignKey(oi => oi.OrderId)
-                .OnDelete(DeleteBehavior.Cascade); // При удалении заказа удаляются все связанные элементы
+                .OnDelete(DeleteBehavior.Cascade); 
 
             // Связь "Многие к одному" между OrderItem и Product
             modelBuilder.Entity<OrderItem>()
                 .HasOne(oi => oi.Product)
                 .WithMany(p => p.OrderItems)
                 .HasForeignKey(oi => oi.ProductId)
-                .OnDelete(DeleteBehavior.Restrict); // При удалении товара элементы заказа не удаляются
-
+                .OnDelete(DeleteBehavior.Restrict); 
+            
             // Конфигурация сущности ShoppingCart
             modelBuilder.Entity<ShoppingCart>()
                 .HasKey(sc => sc.Id);
@@ -150,14 +150,14 @@ public class AppDbContext: DbContext
                 .HasOne(sci => sci.Cart)
                 .WithMany(sc => sc.ShoppingCartItems)
                 .HasForeignKey(sci => sci.CartId)
-                .OnDelete(DeleteBehavior.Cascade); // При удалении корзины удаляются все её элементы
+                .OnDelete(DeleteBehavior.Cascade); 
 
             // Связь "Многие к одному" между ShoppingCartItem и Product
             modelBuilder.Entity<ShoppingCartItem>()
                 .HasOne(sci => sci.Product)
                 .WithMany(p => p.ShoppingCartItems)
                 .HasForeignKey(sci => sci.ProductId)
-                .OnDelete(DeleteBehavior.Restrict); // При удалении товара элементы корзины не удаляются
+                .OnDelete(DeleteBehavior.Restrict); 
 
             // Конфигурация сущности Review
             modelBuilder.Entity<Review>()
@@ -190,7 +190,7 @@ public class AppDbContext: DbContext
             modelBuilder.Entity<Role>().HasData(
                 new Role { id = 1, Name = "Admin" },
                 new Role { id = 2, Name = "User" },
-                new Role { id = 3, Name = "Supplier" } // Добавлен поставщик
+                new Role { id = 3, Name = "Supplier" } 
             );
 
             // Пароли (реальные пароли в комментариях, хеши SHA256 в данных)
@@ -308,7 +308,19 @@ public class AppDbContext: DbContext
                 new ShoppingCart
                 {
                     Id = 1,
-                    UserId = 2, // Обычный пользователь
+                    UserId = 1, 
+                    CreatedAt = baseDate
+                },
+                new ShoppingCart
+                {
+                    Id = 2,
+                    UserId = 2, 
+                    CreatedAt = baseDate
+                },
+                new ShoppingCart
+                {
+                    Id = 3,
+                    UserId = 3, 
                     CreatedAt = baseDate
                 }
             );

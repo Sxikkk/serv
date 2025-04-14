@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iSxfk1m+Kus=",
+  "dgSpecHash": "WGpbolHYe6k=",
   "success": true,
-  "projectFilePath": "E:\\PROJECTS\\FULLSTACK\\serv\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "E:\\PROJECTS\\FULLSTACK\\serv7\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\wallk\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\wallk\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",

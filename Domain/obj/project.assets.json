@@ -4748,11 +4748,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\Domain.csproj",
+      "projectUniqueName": "E:\\PROJECTS\\FULLSTACK\\serv7\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\Domain.csproj",
+      "projectPath": "E:\\PROJECTS\\FULLSTACK\\serv7\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\wallk\\.nuget\\packages\\",
-      "outputPath": "E:\\PROJECTS\\FULLSTACK\\serv\\Domain\\obj\\",
+      "outputPath": "E:\\PROJECTS\\FULLSTACK\\serv7\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\wallk\\AppData\\Roaming\\NuGet\\NuGet.Config"
