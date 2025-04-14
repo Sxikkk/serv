@@ -27,9 +27,11 @@ public class User
     public ShoppingCart ShoppingCart { get; set; }
 
     // Связь с заказами
+    [JsonIgnore]
     public ICollection<Order> Orders { get; set; } = new List<Order>();
 
     // Связь с отзывами
+    [JsonIgnore]
     public ICollection<Review> Reviews { get; set; } = new List<Review>();
 
     public DateTime CreatedAt { get; set; }
